@@ -20,7 +20,7 @@ app.use(
 
 app.use(cookieParser());
 
-// const userRoutes  = require('./routes/user');
+const userRoutes  = require('./routes/api/user');
 // const productRoutes = require('./routes/product');
 
 app.use((req, res, next) => {
@@ -43,10 +43,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/health", (req, res) => {
-  return res.json({ status: "ok ✅", env });
-});
-// app.use('/api/users', userRoutes);
+app.use('/api/users/', userRoutes);
 // app.use('/api/products', productRoutes);
 
 app.use((req, res) => {
