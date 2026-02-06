@@ -9,7 +9,7 @@ const controller = require("./user");
 function authMiddleware(req, res, next) {
     try {
         const authHeader = req.headers['authorization'];
-        const token = authHeader && authHeader.split(' ')[1];
+        const token = authHeader?.split(' ')[1];
         if (!token) {
             return res.status(401).json({ error: 'Token missing', message: 'Token missing' });
         }
@@ -21,6 +21,7 @@ function authMiddleware(req, res, next) {
                 res.locals.id = decoded.id;
                 res.locals.firstName = decoded.firstName;
                 res.locals.lastName = decoded.lastName;
+                res.locals.username = decoded.username;
                 return next();
             }
         })
@@ -29,7 +30,5 @@ function authMiddleware(req, res, next) {
         return res.status(403).json({ error: "Not authorized", message: "Invalid token or expired" });
     }
 }
-
-router.post('/register', controller.registerUser);
 
 module.exports = router;
