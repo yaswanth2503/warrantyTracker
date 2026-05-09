@@ -12,6 +12,14 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+router.get('/register', (req, res) => {
+    res.render('register');
+});
+
+router.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+});
+
 router.post('/register', async (req, res) => {
     try {
         const { firstName = '', lastName = '', email = '', password = '', username = ''} = req.body;

@@ -1,0 +1,61 @@
+extends layout
+
+block content
+	.container.d-flex.justify-content-center.align-items-center(style="min-height: 100vh;")
+		.card.shadow.p-4(style="width: 500px;")
+			h2.text-center.mb-4 Register
+
+			form(method="POST", action="/register")
+
+				.row
+					.col-md-6.mb-3
+						label.form-label First Name
+						input.form-control(
+							type="text",
+							name="firstName",
+							placeholder="First name",
+							required
+						)
+
+					.col-md-6.mb-3
+						label.form-label Last Name
+						input.form-control(
+							type="text",
+							name="lastName",
+							placeholder="Last name",
+							required
+						)
+
+				.mb-3
+					label.form-label Username
+					input.form-control(
+						type="text",
+						name="username",
+						placeholder="Username",
+						required
+					)
+
+				.mb-3
+					label.form-label Email
+					input.form-control(
+						type="email",
+						name="email",
+						placeholder="Email address",
+						required
+					)
+
+				.mb-3
+					label.form-label Password
+					input.form-control(
+						type="password",
+						name="password",
+						placeholder="Password",
+						required
+					)
+
+				button.btn.btn-success.w-100(type="submit")
+					| Register
+
+			p.text-center.mt-3
+				| Already have an account?
+				a.ms-1(href="/login") Login
