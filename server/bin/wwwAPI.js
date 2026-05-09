@@ -3,7 +3,7 @@ const appAPI = require("../appAPI.js");
 const models = require("../models");
 const config = require("../config/config.js");
 
-appAPI.set("port", config.apiPort || 8000);
+appAPI.set("port", process.env.PORT || config.apiPort || 8080);
 
 const server = appAPI.listen(appAPI.get("port"), async () => {
   console.log(`[API] Listening on port ${appAPI.get("port")}`);
