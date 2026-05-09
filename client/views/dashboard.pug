@@ -1,0 +1,71 @@
+extends layout
+
+block content
+    .container.mt-5
+        .row.mb-4
+            .col-md-12
+                .card.shadow-sm.p-4
+                    h2.mb-2 Dashboard
+                    p.text-muted.mb-0 Welcome to Warranty Tracker
+
+        .row.g-4
+
+            .col-md-4
+                .card.shadow-sm.border-0
+                    .card-body
+                        h5.card-title Total Products
+                        h2.text-primary 120
+                        p.text-muted.mb-0 Registered products
+
+            .col-md-4
+                .card.shadow-sm.border-0
+                    .card-body
+                        h5.card-title Active Warranties
+                        h2.text-success 95
+                        p.text-muted.mb-0 Currently active
+
+            .col-md-4
+                .card.shadow-sm.border-0
+                    .card-body
+                        h5.card-title Expired Warranties
+                        h2.text-danger 25
+                        p.text-muted.mb-0 Warranty expired
+
+        .row.mt-5
+            .col-md-12
+                .card.shadow-sm.border-0
+                    .card-body
+                        .d-flex.justify-content-between.align-items-center.mb-3
+                            h4.mb-0 Recent Products
+                            a.btn.btn-primary.btn-sm(href="/products/add")
+                                | Add Product
+
+                        table.table.table-hover
+                            thead
+                                tr
+                                    th Product
+                                    th Brand
+                                    th Purchase Date
+                                    th Warranty Status
+
+                            tbody
+                                tr
+                                    td Laptop
+                                    td HP
+                                    td 12 Jan 2025
+                                    td
+                                        span.badge.bg-success Active
+
+                                tr
+                                    td Mobile
+                                    td Samsung
+                                    td 05 Mar 2024
+                                    td
+                                        span.badge.bg-danger Expired
+
+                                tr
+                                    td Washing Machine
+                                    td LG
+                                    td 18 Aug 2024
+                                    td
+                                        span.badge.bg-success Active
