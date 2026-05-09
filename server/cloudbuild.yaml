@@ -30,5 +30,5 @@ steps:
         "managed",
         "--allow-unauthenticated",
         "--set-env-vars",
-        "DB_USERNAME=postgres,DB_PASSWORD=postgres,DB_HOST=YOUR_HOST,DB_PORT=5432,DB_NAME=WarrantyTracker,JWT_SECRET=12345Secret54321,API_PORT=8080"
+        "DB_USERNAME=postgres,DB_PASSWORD=Postgres@18,DB_HOST=34.131.201.29,DB_PORT=5432,DB_NAME=warrantytracker,JWT_SECRET=12345Secret54321,API_PORT=8080"
       ]
