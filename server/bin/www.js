@@ -2,7 +2,7 @@
 const app = require('../app.js');
 const config = require('../config/config.js');
 
-app.set("port", config.appAPI || 4000);
+app.set("port", config.appAPI || 5000);
 
 const server = app.listen(app.get("port"), () => {
 	console.log(`[Client] Listening on port ${app.get("port")}`);
