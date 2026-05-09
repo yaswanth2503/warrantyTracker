@@ -15,7 +15,7 @@ COPY server ./server
 
 ENV NODE_ENV=production
 
-EXPOSE 4040
+EXPOSE 8080
 
 WORKDIR /app/server
 
