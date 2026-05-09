@@ -3,16 +3,18 @@ steps:
     args:
       [
         "build",
+        "-f",
+        "server/Dockerfile",
         "-t",
         "asia-south1-docker.pkg.dev/$PROJECT_ID/warranty-repo/backend-service",
-        ".",
+        "./server"
       ]
 
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "push",
-        "asia-south1-docker.pkg.dev/$PROJECT_ID/warranty-repo/backend-service",
+        "asia-south1-docker.pkg.dev/$PROJECT_ID/warranty-repo/backend-service"
       ]
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -30,7 +32,7 @@ steps:
         "managed",
         "--allow-unauthenticated",
         "--set-env-vars",
-        "DB_USERNAME=postgres,DB_PASSWORD=Postgres@18,DB_HOST=34.131.201.29,DB_PORT=5432,DB_NAME=warrantytracker,JWT_SECRET=12345Secret54321,API_PORT=8080"
+        "DB_USERNAME=postgres,DB_PASSWORD=Postgres@18,DB_HOST=34.131.201.29,DB_PORT=5432,DB_NAME=warrantytracker,JWT_SECRET=12345Secret54321"
       ]
 
 options:
