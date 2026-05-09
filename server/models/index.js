@@ -1,23 +1,21 @@
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
-const dbConfig = require("../config/db.json");
+const dbConfig = require("../config/config.js");
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || "development";
-const config = dbConfig[env];
 
 const db = {};
 
 const sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
+  dbConfig.database,
+  dbConfig.username,
+  dbConfig.password,
   {
-    host: config.host,
-    port: config.port,
-    dialect: config.dialect,
-    logging: config.logging || false,
-    ssl: config.ssl || false
+    host: dbConfig.host,
+    port: dbConfig.port,
+    dialect: dbConfig.dialect,
+    logging: dbConfig.logging || false,
+    ssl: dbConfig.ssl || false
   }
 );
 

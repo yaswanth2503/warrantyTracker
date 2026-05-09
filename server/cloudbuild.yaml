@@ -1,0 +1,34 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-south1-docker.pkg.dev/$PROJECT_ID/warranty-repo/backend-service",
+        ".",
+      ]
+
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "asia-south1-docker.pkg.dev/$PROJECT_ID/warranty-repo/backend-service",
+      ]
+
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      [
+        "run",
+        "deploy",
+        "backend-service",
+        "--image",
+        "asia-south1-docker.pkg.dev/$PROJECT_ID/warranty-repo/backend-service",
+        "--region",
+        "asia-south1",
+        "--platform",
+        "managed",
+        "--allow-unauthenticated",
+        "--set-env-vars",
+        "DB_USERNAME=postgres,DB_PASSWORD=postgres,DB_HOST=YOUR_HOST,DB_PORT=5432,DB_NAME=WarrantyTracker,JWT_SECRET=12345Secret54321,API_PORT=8080"
+      ]

@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 const appAPI = require("../appAPI.js");
 const models = require("../models");
-const env = process.env.NODE_ENV || "development";
-const config = require("../config/db.json")[env];
+const config = require("../config/config.js");
 
 appAPI.set("port", config.apiPort || 8000);
 

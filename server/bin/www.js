@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const app = require('../app.js');
-const env = process.env.NODE_ENV || "development";
-const config = require('../config/db.json')[env];
+const config = require('../config/config.js');
 
 app.set("port", config.appPort || 4000);
 
