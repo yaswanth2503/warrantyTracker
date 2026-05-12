@@ -5,7 +5,7 @@ block content
 		.card.shadow.p-4(style="width: 400px;")
 			h2.text-center.mb-4 Login
 
-			form(method="POST", action="/login")
+			form#loginForm
 				.mb-3
 					label.form-label Username
 					input.form-control(
@@ -32,3 +32,6 @@ block content
 			p.text-center.mt-3
 				| Don't have an account?
 				a.ms-1(href="/register") Register
+
+block scripts
+	script(src='/js/login.js')
