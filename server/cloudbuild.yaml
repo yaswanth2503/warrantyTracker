@@ -24,15 +24,23 @@ steps:
         "run",
         "deploy",
         "backend-service",
+
         "--image",
         "asia-south1-docker.pkg.dev/$PROJECT_ID/warranty-repo/backend-service",
+
         "--region",
         "asia-south1",
+
         "--platform",
         "managed",
+
         "--allow-unauthenticated",
+
+        "--add-cloudsql-instances",
+        "$PROJECT_ID:asia-south1:warrantytracker",
+
         "--set-env-vars",
-        "DB_USERNAME=postgres,DB_PASSWORD=Postgres@18,DB_HOST=34.131.201.29,DB_PORT=5432,DB_NAME=warrantytracker,JWT_SECRET=12345Secret54321"
+        "DB_USERNAME=postgres,DB_PASSWORD=Postgres@18,DB_NAME=warrantytracker,JWT_SECRET=12345Secret54321,INSTANCE_CONNECTION_NAME=$PROJECT_ID:asia-south1:warrantytracker"
       ]
 
 options:

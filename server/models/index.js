@@ -3,21 +3,39 @@ const path = require("path");
 const Sequelize = require("sequelize");
 const dbConfig = require("../config/config.js");
 const basename = path.basename(__filename);
+const ENV = process.env.NODE_ENV || "development";
 
 const db = {};
+let sequelize;
 
-const sequelize = new Sequelize(
-  dbConfig.database,
-  dbConfig.username,
-  dbConfig.password,
-  {
-    host: dbConfig.host,
-    port: dbConfig.port,
-    dialect: dbConfig.dialect,
-    logging: dbConfig.logging || false,
-    ssl: dbConfig.ssl || false
-  }
-);
+if (ENV == "development") {
+  sequelize = new Sequelize(
+    dbConfig.database,
+    dbConfig.username,
+    dbConfig.password,
+    {
+      host: dbConfig.host,
+      port: dbConfig.port,
+      dialect: dbConfig.dialect,
+      logging: dbConfig.logging || false,
+      ssl: dbConfig.ssl || false
+    }
+  );
+} else {
+    sequelize = new Sequelize(
+      dbConfig.database,
+      dbConfig.username,
+      dbConfig.password,
+      {
+        host: `/cloudsql/${dbConfig.hostcloud}`,
+        dialect: dbConfig.dialect,
+        logging: dbConfig.logging || false,
+        ssl: dbConfig.ssl || false
+      }
+   );
+}
+
+
 
 fs.readdirSync(__dirname)
   .filter((file) => {
