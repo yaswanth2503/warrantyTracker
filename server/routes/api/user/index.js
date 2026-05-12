@@ -30,5 +30,7 @@ function authMiddleware(req, res, next) {
         return res.status(403).json({ error: "Not authorized", message: "Invalid token or expired" });
     }
 }
-
+router.post('/register', controller.register);
+router.post('/login', controller.login);
+router.get('/logout', controller.logout);
 module.exports = router;

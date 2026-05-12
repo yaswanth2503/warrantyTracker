@@ -5,7 +5,7 @@ block content
 		.card.shadow.p-4(style="width: 500px;")
 			h2.text-center.mb-4 Register
 
-			form(method="POST", action="/register")
+			form#regForm
 
 				.row
 					.col-md-6.mb-3
@@ -59,3 +59,6 @@ block content
 			p.text-center.mt-3
 				| Already have an account?
 				a.ms-1(href="/login") Login
+
+block scripts 
+	script(src='/js/register.js')
