@@ -2,12 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const compression = require("compression");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const env = process.env.NODE_ENV || "development";
 
 const app = express();
 app.disable("x-powered-by");
 
 app.use(compression({ level: 9, memLevel: 9 }));
+app.use(cors());
+app.use(express.json());
 
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(
