@@ -12,15 +12,10 @@ app.use(compression());
 
 app.use(
   cors({
-    origin: "*",
+    origin: ["https://frontend-service-121438965080.asia-south1.run.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "X-Requested-With",
-      "Accept",
-      "Origin",
-    ],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   }),
 );
 
@@ -44,6 +39,26 @@ app.use(cookieParser());
 
 app.use((req, res, next) => {
   res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  next();
+});
+
+app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://frontend-service-121438965080.asia-south1.run.app",
+  );
+
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+  );
+
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+
   next();
 });
 

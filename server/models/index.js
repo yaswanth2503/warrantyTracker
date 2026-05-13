@@ -28,8 +28,7 @@ if (ENV == "development") {
       {
         host: `/cloudsql/${dbConfig.hostcloud}`,
         dialect: dbConfig.dialect,
-        logging: dbConfig.logging || false,
-        ssl: dbConfig.ssl || false
+        logging: dbConfig.logging || false
       }
    );
 }
