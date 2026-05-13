@@ -17,8 +17,7 @@ if (ENV == "development") {
       host: dbConfig.host,
       port: dbConfig.port,
       dialect: dbConfig.dialect,
-      logging: dbConfig.logging || false,
-      ssl: dbConfig.ssl || false
+      logging: dbConfig.logging || false
     }
   );
 } else {
